@@ -1,0 +1,23 @@
+dot_x = [25, 10, 10, 13, 30, 5, 23, 14, 22, 6]
+dot_y = [1, 5, 7.5, 11, 8, 15, 17, 23, 28, 32]
+
+cross_x = [50, 60, 55, 59, 71, 56, 61, 58, 62, 61]
+cross_y = [4, 5, 6, 9, 10, 12, 15, 20, 25, 35]
+
+avg_dot = avg_dot_x, avg_dot_y = (sum(dot_x) / len(dot_x), sum(dot_y) / len(dot_y))
+avg_cross = avg_cross_x, avg_cross_y = (sum(cross_x) / len(cross_x), sum(cross_y) / len(cross_y))
+
+mid = mid_x, mid_y = ((avg_dot_x + avg_cross_x)/2, (avg_dot_y + avg_cross_y)/2)
+
+slope = (avg_cross_y - avg_dot_y) / (avg_cross_x - avg_dot_x)
+slope = -1/slope
+
+x = float(input("Enter x of test point: "))
+y = float(input("Enter y of test point: "))
+
+if y > (slope * x) - (slope * mid_x) + mid_y:
+    print("The target point is a dot")
+elif y < (slope * x) - (slope * mid_x) + mid_y:
+    print("The target point is a cross")
+else:
+    print("The target point is on the line")
